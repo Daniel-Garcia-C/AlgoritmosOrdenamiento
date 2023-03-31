@@ -2,21 +2,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Calendar;
 
+
+/**
+ * Comparación de algoritmos de ordenamiento en un Dataset.
+ * @author Aarón Isaac Graniel Arzat
+ * @author Daniel García Cetina
+ * 
+ * @version 1.0
+ */
 public class ImpOrdenamiento {
     
     public static void main(String args[]) throws IOException {
 
-        Metrica metricaBinaryInsertionSort = new Metrica();
-        Metrica metricaMergeSort = new Metrica();
-        Metrica metricaQuickSort = new Metrica();
-        Metrica metricaRadixSort = new Metrica();
-    
         Scanner entrada = new Scanner(System.in);
 
         int opc;
         int order;
         int tipo = 2;
+        long millis = 0;
 
         DaoArchivos dao = new DaoArchivos("datashed.csv");
         LinkedList<ArrayList<String>> lista = dao.getLista();
@@ -44,46 +49,47 @@ public class ImpOrdenamiento {
             tipo = 2;
         } else 
             opc = 1;
-        //Binary Insertion Sort
-        metricaBinaryInsertionSort.start();
+
+        
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
         bis.binaryInsertionSort(opc - 1, order, tipo);
-        metricaBinaryInsertionSort.stop();
-        metricaBinaryInsertionSort.setCount(bis.getCountChanges());
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
+        System.out.println("Tiempo" + millis);
         LinkedList<ArrayList<String>> listaBinInSort = bis.getLista();
         dao.generarArchivoSalida(listaBinInSort,"ArchivosSalida/BinaryInsertionSort_ordenado.csv");
+        dao.generarArchivoSalida("Binary Insertion Sort", String.valueOf(millis), "No vale para este algoritmo", String.valueOf(bis.getComparaciones()));
 
-        //QuickSort
-        metricaQuickSort.start();
+        millis = 0;
+
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
         quickSort.recQSort(0, lista.size()-1,opc-1,order,tipo);
-        metricaQuickSort.stop();
-        metricaQuickSort.setCount(quickSort.getSwapCounter());
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
+        System.out.println("Tiempo" + millis);
         LinkedList<ArrayList<String>> listaQSort = quickSort.getLista();
         dao.generarArchivoSalida(listaQSort,"ArchivosSalida/QuickSort_ordenado.csv");
+        dao.generarArchivoSalida("Quick Sort", String.valueOf(millis), String.valueOf(quickSort.getIntercambios()), String.valueOf(quickSort.getComparaciones()));
 
-        //MergeSort
-        metricaMergeSort.start();
+        millis = 0;
+
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
         merge.mergeSort(order, tipo, opc - 1);
-        metricaMergeSort.stop();
-        metricaMergeSort.setCount(merge.getCount());
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
+        System.out.println("Tiempo" + millis);
         LinkedList<ArrayList<String>> listaMergeSort = merge.getList();
         dao.generarArchivoSalida(listaMergeSort,"ArchivosSalida/MergeSort_ordenado.csv");
+        dao.generarArchivoSalida("Merge Sort", String.valueOf(millis), "No vale para este algoritmo", String.valueOf(merge.getComparaciones()));
         
-        metricaRadixSort.start();
+        millis = 0;
+        
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
         radix.radixSort(lista.size(), opc - 1, order, tipo);
-        metricaRadixSort.stop();
-        metricaRadixSort.setCount(radix.getContador());
+        millis = Calendar.getInstance().getTimeInMillis() - millis;
         LinkedList<ArrayList<String>> listaRadixSort = radix.getList();
+        System.out.println("Tiempo" + millis);
         dao.generarArchivoSalida(listaRadixSort,"ArchivosSalida/RadixSort_ordenado.csv");
+        dao.generarArchivoSalida("Radix Sort", String.valueOf(millis), "No vale para este algoritmo", "No vale para este algoritmo");
+
 
         entrada.close();
-
-        System.out.println("Binary Insertion Sort");
-        metricaBinaryInsertionSort.displayMetrics();
-        System.out.println("QuickSort");
-        metricaQuickSort.displayMetrics();
-        System.out.println("MergeSort");
-        metricaMergeSort.displayMetrics();
-        System.out.println("RadixSort");
-        metricaRadixSort.displayMetrics();
     }
 }

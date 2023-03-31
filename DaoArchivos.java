@@ -9,9 +9,22 @@ import java.util.LinkedList;
 
 public class DaoArchivos {
     
+
+    /**
+     * La dirección URL del archivo (.csv ó .txt).
+     */
     private String direccion;
+
+    /**
+     * La lista doblemente ligada que alberga la información de cada elemento del Dataset.
+     */
     private LinkedList<ArrayList<String>> lista = new LinkedList<ArrayList<String>>();
     
+    /**
+     * La función que accede a la información del archivo en particular.
+     * @param direccion La dirección URL del archivo (.csv ó .txt).
+     * @throws IOException si el archivo tiene un error de entrada o salida de texto.
+     */
     public DaoArchivos(String direccion) throws IOException{
         this.direccion = direccion;
         
@@ -30,6 +43,18 @@ public class DaoArchivos {
                 }
                 lista.add(fila);
             }
+
+            File archivoSalida = new File("ArchivosSalida/Metricas.txt");
+            FileWriter writer = new FileWriter(archivoSalida, false);
+            writer.write("Métricas de Ordenamiento\n");
+            writer.write("=========================\n\n");
+
+            writer.write("Descripción de las métricas:\n\n");
+
+            writer.write("El tiempo total de ejecución indica la cantidad de tiempo que tomó completar el ordenamiento.\n");
+            writer.write("El número total de comparaciones indica la cantidad de veces que se compararon dos elementos para determinar su orden.\n");
+            writer.write("El número total de intercambios indica la cantidad de veces que se intercambiaron dos elementos para ordenar la lista.\n\n");
+            writer.close();
         }catch(NumberFormatException ex){
             System.out.println("Error al obtener las calificaciones");
         } catch (FileNotFoundException fnfe) {
@@ -45,10 +70,21 @@ public class DaoArchivos {
         }
     }
 
+    /**
+     * Función de retorno de la lista doblemente ligada.
+     * @return La lista doblemente ligada con sus elementos asignados.
+     */
     public LinkedList<ArrayList<String>> getLista(){
         return this.lista;
     }
 
+    /**
+     * Función que genera un archivo nuevo de salida con respecto a los elementos otorgados en una lista doblemente ligada.
+     * @param lista La lista doblemente ligada con elementos de datos.
+     * @param direccion El nombre del archivo a actualizar o crear en una carpeta.
+     * @return El número 0 en caso de ser éxitoso la creación de archivo.
+     * @throws IOException En caso de fallo con la escritura de entrada o salida del archivo.
+     */
     public int generarArchivoSalida(LinkedList<ArrayList<String>> lista, String direccion) throws IOException{
         try {
             File archivoSalida = new File(direccion);
@@ -69,6 +105,36 @@ public class DaoArchivos {
             System.out.println("Exception: Documento No Encontrado en: " + direccion);
         }
         System.out.println("Archivo generado con exito");
+        return 0;
+    }
+
+    /**
+     * Función para generar un archivo de salida con las métricas de cada algoritmo.
+     * <ul>
+     * <li>Tiempo de ejecución del algoritmo
+     * <li>Número de comparaciones
+     * <li>Número de intercambios
+     * <ul>
+     * @param nombre Es el nombre del algoritmo de ordenamiento a añadir al archivo.
+     * @param time Es el tiempo de ejecución del algoritmo de ordenamiento.
+     * @param intercambios Es el número de intercambios realizado por el algoritmo de ordenamiento.
+     * @param comparaciones Es el número de comparaciones realizado por el algoritmo de ordenamiento.
+     * @return El número 0 en caso de ser éxitoso la creación de archivo.
+     * @throws IOException En caso de fallo con la escritura de entrada o salida del archivo.
+     */
+    public int generarArchivoSalida(String nombre, String time, String intercambios, String comparaciones) throws IOException {
+        try {
+            File archivoSalida = new File("ArchivosSalida/Metricas.txt");
+            FileWriter writer = new FileWriter(archivoSalida, true);
+            writer.write("Algoritmo de " + nombre + "\n");
+            writer.write("Tiempo de ejecución: " + time + "ms\n");
+            writer.write("Número de comparaciones: " + comparaciones + "\n");
+            writer.write("Número de intercambios: " + intercambios + "\n\n");
+            writer.close();
+
+        } catch (IOException e) {
+            System.out.println("Exception: Documento No Encontrado en: " + direccion);
+        }
         return 0;
     }
     

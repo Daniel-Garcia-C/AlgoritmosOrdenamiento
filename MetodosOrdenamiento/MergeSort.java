@@ -2,53 +2,90 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MergeSort{
-   private LinkedList<ArrayList<String>> lista;          // ref to array theArray
-   private int contador;
+   /**
+    * Atributo de la lista doblemente ligado con una ArrayList de elementos.
+    */
+   private LinkedList<ArrayList<String>> lista;
+   /**
+    * Atributo que almacena las comparaciones realizadas en el algoritmo de ordenamiento.
+    */
+   private int comparaciones;          
 
+   /**
+    * Constructor de la clase.
+    * @param lista Lista doblemente ligada con ArrayList de elementos de un Dataset.
+    */
    public MergeSort(LinkedList<ArrayList<String>> lista)   {
       this.lista = lista;
-      this.contador = 0;
+      this.comparaciones = 0;
    }
 
+   /**
+    * Función para obtener la lista doblemente ligada con ArrayList de elementos de un Dataset.
+    * @return Obtener la lista doblemente ligada con ArrayList de elementos de un Dataset
+    */
    public LinkedList<ArrayList<String>> getList(){
       return lista;
    }
 
+   /**
+    * Función para obtener el número de comparaciones realizados en el algoritmo de búsqueda.
+    * @return Número entero de comparaciones realizadas en el algoritmo de búsqueda.
+    */
+   public int getComparaciones() {
+      return comparaciones;
+   }
+
+   /**
+    * Función para generar el espacio de trabajo para el algoritmo de ordenamiento: MergeSort
+    * @param order El tipo de orden que se requiere: Ascendente (1) | Descendente (!1)
+    * @param tipo El tipo de dato (String ó Entero) a ordenar del Dataset con respecto a las columnas.
+    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos. 
+    */
    public void mergeSort(int order, int tipo, int key) {
       LinkedList<ArrayList<String>> workSpace = new LinkedList<ArrayList<String>>();
       recMergeSort(workSpace, 0, lista.size()-1, order, tipo, key);
    }
 
    private void recMergeSort(LinkedList<ArrayList<String>> workSpace, int lowerBound, int upperBound, int order, int tipo, int key){
-      if(lowerBound == upperBound)            // if range is 1,
-         return;                              // no use sorting
+      if(lowerBound == upperBound)            
+         return;                              
       else {                                    
-         int mid = (lowerBound+upperBound) / 2; // find midpoint    
-         recMergeSort(workSpace, lowerBound, mid,order,tipo,key); // sort low half
-         recMergeSort(workSpace, mid+1, upperBound,order,tipo,key); // sort high half
+         int mid = (lowerBound+upperBound) / 2;    
+         recMergeSort(workSpace, lowerBound, mid,order,tipo,key); 
+         recMergeSort(workSpace, mid+1, upperBound,order,tipo,key); 
          if(order == 1){
-            mergeASC(workSpace, lowerBound, mid+1, upperBound,tipo,key); // merge them
-            this.contador++;
+            mergeASC(workSpace, lowerBound, mid+1, upperBound,tipo,key); 
          } else {   
-            mergeDES(workSpace, lowerBound, mid+1, upperBound,tipo,key); // merge them
+            mergeDES(workSpace, lowerBound, mid+1, upperBound,tipo,key); 
          }
-      }  // end else
-   }  // end recMergeSort()
+      }  
+   }  
 
+   /**
+    * Función para hacer Merge en forma <b>Ascendente</b> del algoritmo de búsqueda MergeSort.
+    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusión.
+    * @param lowPtr Es un índice que apunta al primer elemento del subarreglo a fusionar.
+    * @param highPtr Es un índice que apunta al último elemento del subarreglo a fusionar.
+    * @param upperBound Es un índice que apunta al último elemento del arreglo a ordenar.
+    * @param tipo Es un parámetro que indica el tipo de dato a ordenar con respecto al Dataset.
+    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
+    */
    private void mergeASC(LinkedList<ArrayList<String>> workSpace, int lowPtr, int highPtr, int upperBound, int tipo,int key) {
-      int j = 0;                             // workspace index
+      int j = 0;                             
       int lowerBound = lowPtr;
       int mid = highPtr-1;
-      int n = upperBound-lowerBound+1;       // # of items
+      int n = upperBound-lowerBound+1;       
       if(tipo == 2){
 
          while(lowPtr <= mid && highPtr <= upperBound){
-            this.contador++;
+            comparaciones++;
             if( Double.parseDouble(lista.get(lowPtr).get(key)) < Double.parseDouble(lista.get(highPtr).get(key)) )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
          }
+
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -61,12 +98,13 @@ public class MergeSort{
       } else {
 
          while(lowPtr <= mid && highPtr <= upperBound){
-            this.contador++;
+            comparaciones++;
             if( lista.get(lowPtr).get(key).compareTo(lista.get(highPtr).get(key)) < 0 )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
          }
+
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -79,20 +117,30 @@ public class MergeSort{
       }
    }
 
+   /**
+    * Función para hacer Merge en forma <b>Descendente</b> del algoritmo de búsqueda MergeSort.
+    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusión.
+    * @param lowPtr Es un índice que apunta al primer elemento del subarreglo a fusionar.
+    * @param highPtr Es un índice que apunta al último elemento del subarreglo a fusionar.
+    * @param upperBound Es un índice que apunta al último elemento del arreglo a ordenar.
+    * @param tipo Es un parámetro que indica el tipo de dato a ordenar con respecto al Dataset.
+    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
+    */
    private void mergeDES(LinkedList<ArrayList<String>> workSpace, int lowPtr, int highPtr, int upperBound, int tipo, int key) {
-      int j = 0;                             // workspace index
+      int j = 0;                             
       int lowerBound = lowPtr;
       int mid = highPtr-1;
-      int n = upperBound-lowerBound+1;       // # of items
+      int n = upperBound-lowerBound+1;       
       if(tipo == 2){
 
          while(lowPtr <= mid && highPtr <= upperBound){
-            this.contador++;
+            comparaciones++;
             if( Double.parseDouble(lista.get(lowPtr).get(key)) > Double.parseDouble(lista.get(highPtr).get(key)) )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
          }
+
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -104,13 +152,14 @@ public class MergeSort{
 
       } else {
 
-         while(lowPtr <= mid && highPtr <= upperBound){
-            this.contador++;
+         while(lowPtr <= mid && highPtr <= upperBound) {
+            comparaciones++;
             if( lista.get(lowPtr).get(key).compareTo(lista.get(highPtr).get(key)) > 0 )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
          }
+
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -121,9 +170,5 @@ public class MergeSort{
             lista.set(lowerBound+j, workSpace.get(j));
 
       }
-   }
-
-   public int getCount(){
-      return this.contador;
    }
 }

@@ -1,0 +1,29 @@
+Métricas de Ordenamiento
+=========================
+
+Descripción de las métricas:
+
+El tiempo total de ejecución indica la cantidad de tiempo que tomó completar el ordenamiento.
+El número total de comparaciones indica la cantidad de veces que se compararon dos elementos para determinar su orden.
+El número total de intercambios indica la cantidad de veces que se intercambiaron dos elementos para ordenar la lista.
+
+Algoritmo de Binary Insertion Sort
+Tiempo de ejecución: 9603ms
+Número de comparaciones: 17941
+Número de intercambios: No vale para este algoritmo
+
+Algoritmo de Quick Sort
+Tiempo de ejecución: 14044ms
+Número de comparaciones: 1777848
+Número de intercambios: 1779211
+
+Algoritmo de Merge Sort
+Tiempo de ejecución: 176ms
+Número de comparaciones: 11239
+Número de intercambios: No vale para este algoritmo
+
+Algoritmo de Radix Sort
+Tiempo de ejecución: 8998ms
+Número de comparaciones: No vale para este algoritmo
+Número de intercambios: No vale para este algoritmo
+
