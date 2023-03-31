@@ -11,7 +11,7 @@ public class MergeSort{
    /**
     * Atributo de la lista doblemente ligado con una ArrayList de elementos.
     */
-   private LinkedList<ArrayList<String>> lista;
+   private LinkedList<ArrayList<String>> lista = new LinkedList<ArrayList<String>>();
    /**
     * Atributo que almacena las comparaciones realizadas en el algoritmo de ordenamiento.
     */
@@ -22,7 +22,7 @@ public class MergeSort{
     * @param lista Lista doblemente ligada con ArrayList de elementos de un Dataset.
     */
    public MergeSort(LinkedList<ArrayList<String>> lista)   {
-      this.lista = lista;
+      this.lista.addAll(lista);
       this.comparaciones = 0;
    }
 

@@ -12,7 +12,7 @@ public class QuickSort{
     /**
      * Atributo de lista doblemente ligada con un ArrayList.
      */
-    private LinkedList<ArrayList<String>> list;
+    private LinkedList<ArrayList<String>> list = new LinkedList<ArrayList<String>>();
     /**
      * Atributo que almacena las comparaciones realizadas en el algoritmo de ordenamiento.
      */
@@ -27,7 +27,7 @@ public class QuickSort{
      * @param list Lista doblemente ligada con un ArrayList con al información del Dataset a usar en el algoritmo de ordenamiento.
      */
     public QuickSort(LinkedList<ArrayList<String>> list)   {
-        this.list = list;
+        this.list.addAll(list);
         this.comparaciones = 0;
         this.intercambios = 0;
     }

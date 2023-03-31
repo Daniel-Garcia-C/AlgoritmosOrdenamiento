@@ -10,7 +10,7 @@ public class BinaryInsertionSort {
     /**
      * Lista de los datos que se quieren ordenar
      */
-    private LinkedList<ArrayList<String>> lista;
+    private LinkedList<ArrayList<String>> lista = new LinkedList<ArrayList<String>>();
     /**
      * Tamaño de la lista 
      */
@@ -27,7 +27,7 @@ public class BinaryInsertionSort {
      * @param size El tamanio de la lista
      */
     public BinaryInsertionSort (LinkedList<ArrayList<String>> lista, int size){
-        this.lista = lista;
+        this.lista.addAll(lista);
         this.size = size;
         this.comparaciones = 0;
     }

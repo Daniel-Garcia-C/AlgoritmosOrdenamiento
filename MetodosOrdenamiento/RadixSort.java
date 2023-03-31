@@ -18,7 +18,7 @@ class RadixSort {
 	 * @param lista La lista de elementos que se quiere ordenar.
 	 */
 	public RadixSort(LinkedList<ArrayList<String>> lista){
-		this.array = lista;
+		this.array.addAll(lista);
 	}
 
 	/**
