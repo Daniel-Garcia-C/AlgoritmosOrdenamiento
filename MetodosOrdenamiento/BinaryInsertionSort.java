@@ -5,10 +5,12 @@ public class BinaryInsertionSort {
 
     private LinkedList<ArrayList<String>> lista;
     private int size;
+    private int countChanges;
 
     public BinaryInsertionSort (LinkedList<ArrayList<String>> lista, int size){
         this.lista = lista;
         this.size = size;
+        this.countChanges = 0;
     }
  
     public LinkedList<ArrayList<String>> getLista(){
@@ -20,21 +22,26 @@ public class BinaryInsertionSort {
         while (low <= high) {
             int mid = low + (high - low) / 2;
             if(tipo == 1){
-                if (item.get(key).compareTo(lista.get(mid).get(key))==0)
+                if (item.get(key).compareTo(lista.get(mid).get(key))==0){
+                    this.countChanges++;
                     return mid + 1;
+                }
                 else if (item.get(key).compareTo(lista.get(mid).get(key)) > 0)
                     low = mid + 1;
                 else
                     high = mid - 1;
             } else {
-                if (Double.parseDouble(item.get(key)) == Double.parseDouble(lista.get(mid).get(key)))
+                if (Double.parseDouble(item.get(key)) == Double.parseDouble(lista.get(mid).get(key))){
+                    this.countChanges++;
                     return mid + 1;
+                }
                 else if (Double.parseDouble(item.get(key)) > Double.parseDouble(lista.get(mid).get(key)))
                     low = mid + 1;
                 else
                     high = mid - 1;
             }
         }
+        this.countChanges++;
         return low;
     }
 
@@ -42,21 +49,27 @@ public class BinaryInsertionSort {
         while (low <= high) {
             int mid = low + (high - low) / 2;
             if(tipo == 1){
-                if (item.get(key).compareTo(lista.get(mid).get(key))==0)
-                    return mid + 1;
+                if (item.get(key).compareTo(lista.get(mid).get(key))==0){
+                    this.countChanges++;
+                    return mid + 1; 
+                }
                 else if (item.get(key).compareTo(lista.get(mid).get(key)) < 0)
                     low = mid + 1;
                 else
                     high = mid - 1;
+                 
             } else {
-                if (Double.parseDouble(item.get(key)) == Double.parseDouble(lista.get(mid).get(key)))
+                if (Double.parseDouble(item.get(key)) == Double.parseDouble(lista.get(mid).get(key))){
+                    this.countChanges++;
                     return mid + 1;
+                }
                 else if (Double.parseDouble(item.get(key)) < Double.parseDouble(lista.get(mid).get(key)))
                     low = mid + 1;
                 else
                     high = mid - 1;
             }
         }
+        this.countChanges++;
         return low;
     }
 
@@ -69,11 +82,13 @@ public class BinaryInsertionSort {
             selected = lista.get(i);
     
             // encuentra la posicion donde debe ser insertado el elemento
-            if(order == 1)
+            if(order == 1){
                 loc = binarySearchASC(selected, 0, j, key, tipo);
-            else
+            }
+            else{
                 loc = binarySearchDES(selected, 0, j, key, tipo);
-    
+            }
+
             // Hace un corrimiento a la derecha de los datos
             while (j >= loc) {
                 lista.set(j+1,lista.get(j));
@@ -81,5 +96,9 @@ public class BinaryInsertionSort {
             }
             lista.set(j+1,selected);
         }
+    }
+
+    public int getCountChanges(){
+        return this.countChanges;
     }
 }

@@ -4,9 +4,11 @@ import java.util.LinkedList;
 public class QuickSort{
 
     private LinkedList<ArrayList<String>> list;
+    int swapCounter;
 
     public QuickSort(LinkedList<ArrayList<String>> list)   {
         this.list = list;
+        this.swapCounter = 0;
     }
 
     public LinkedList<ArrayList<String>> getLista(){
@@ -30,6 +32,7 @@ public class QuickSort{
         ArrayList<String> aux = list.get(i);     
         list.set(i, list.get(j));
         list.set(j,aux);
+        this.swapCounter++;
     }
     
     public int partitionASC(int low, int high, int key, int tipo){
@@ -83,5 +86,9 @@ public class QuickSort{
         }
         swap(i + 1, high);
         return (i + 1);
+    }
+
+    public int getSwapCounter(){
+        return swapCounter;
     }
 }

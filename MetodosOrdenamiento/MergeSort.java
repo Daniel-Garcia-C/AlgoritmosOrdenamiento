@@ -3,9 +3,11 @@ import java.util.LinkedList;
 
 public class MergeSort{
    private LinkedList<ArrayList<String>> lista;          // ref to array theArray
+   private int contador;
 
    public MergeSort(LinkedList<ArrayList<String>> lista)   {
       this.lista = lista;
+      this.contador = 0;
    }
 
    public LinkedList<ArrayList<String>> getList(){
@@ -26,6 +28,7 @@ public class MergeSort{
          recMergeSort(workSpace, mid+1, upperBound,order,tipo,key); // sort high half
          if(order == 1){
             mergeASC(workSpace, lowerBound, mid+1, upperBound,tipo,key); // merge them
+            this.contador++;
          } else {   
             mergeDES(workSpace, lowerBound, mid+1, upperBound,tipo,key); // merge them
          }
@@ -39,12 +42,13 @@ public class MergeSort{
       int n = upperBound-lowerBound+1;       // # of items
       if(tipo == 2){
 
-         while(lowPtr <= mid && highPtr <= upperBound)
+         while(lowPtr <= mid && highPtr <= upperBound){
+            this.contador++;
             if( Double.parseDouble(lista.get(lowPtr).get(key)) < Double.parseDouble(lista.get(highPtr).get(key)) )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
-
+         }
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -56,12 +60,13 @@ public class MergeSort{
 
       } else {
 
-         while(lowPtr <= mid && highPtr <= upperBound)
+         while(lowPtr <= mid && highPtr <= upperBound){
+            this.contador++;
             if( lista.get(lowPtr).get(key).compareTo(lista.get(highPtr).get(key)) < 0 )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
-
+         }
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -81,12 +86,13 @@ public class MergeSort{
       int n = upperBound-lowerBound+1;       // # of items
       if(tipo == 2){
 
-         while(lowPtr <= mid && highPtr <= upperBound)
+         while(lowPtr <= mid && highPtr <= upperBound){
+            this.contador++;
             if( Double.parseDouble(lista.get(lowPtr).get(key)) > Double.parseDouble(lista.get(highPtr).get(key)) )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
-
+         }
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -98,12 +104,13 @@ public class MergeSort{
 
       } else {
 
-         while(lowPtr <= mid && highPtr <= upperBound)
+         while(lowPtr <= mid && highPtr <= upperBound){
+            this.contador++;
             if( lista.get(lowPtr).get(key).compareTo(lista.get(highPtr).get(key)) > 0 )
                workSpace.add(j++,lista.get(lowPtr++));
             else
                workSpace.add(j++,lista.get(highPtr++));
-
+         }
          while(lowPtr <= mid)
             workSpace.add(j++,lista.get(lowPtr++));
 
@@ -114,5 +121,9 @@ public class MergeSort{
             lista.set(lowerBound+j, workSpace.get(j));
 
       }
+   }
+
+   public int getCount(){
+      return this.contador;
    }
 }

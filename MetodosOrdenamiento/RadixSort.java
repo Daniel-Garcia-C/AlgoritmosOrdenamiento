@@ -5,11 +5,13 @@ import java.util.LinkedList;
 class RadixSort {
   
 	private LinkedList<ArrayList<String>> array = new LinkedList<ArrayList<String>>();
+	private int contador;
 
 	public RadixSort(LinkedList<ArrayList<String>> lista){
 		for(int i = 0; i<lista.size();i++){
 			this.array.add(lista.get(i));
 		}
+		this.contador = 0;
 	}
 
 	public LinkedList<ArrayList<String>> getList(){
@@ -92,10 +94,13 @@ class RadixSort {
 		for (int i = size - 1; i >= 0; i--) {
 		  	output.set(count[(int)((Double.parseDouble(array.get(i).get(key)) / place) % 10)]-1, array.get(i));
 		  	count[(int)((Double.parseDouble(array.get(i).get(key)) / place) % 10)]--;
+			this.contador++;
 		}
 	
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size; i++){
 		  	array.set(i, output.get(i));
+			this.contador++;
+		}
 	}
 
 	public void countingSortNumDES(int size, int place, int key) {
@@ -114,10 +119,13 @@ class RadixSort {
 		for (int i = size - 1; i >= 0; i--) {
 		  	output.set(count[(int)((Double.parseDouble(array.get(i).get(key)) / place) % 10)]-1, array.get(i));
 		  	count[(int)((Double.parseDouble(array.get(i).get(key)) / place) % 10)]--;
+			this.contador++;
 		}
 	
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < size; i++){
 		  	array.set(i, output.get(i));
+			this.contador++;
+		}
 	}
 
 	public double getMax(int n, int key) {
@@ -150,5 +158,9 @@ class RadixSort {
 					countingSortStrDES(place, key);
 			}
 		}
+	}
+
+	public int getContador(){
+		return this.contador;
 	}
 }

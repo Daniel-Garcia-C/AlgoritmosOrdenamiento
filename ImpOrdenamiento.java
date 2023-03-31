@@ -7,6 +7,11 @@ public class ImpOrdenamiento {
     
     public static void main(String args[]) throws IOException {
 
+        Metrica metricaBinaryInsertionSort = new Metrica();
+        Metrica metricaMergeSort = new Metrica();
+        Metrica metricaQuickSort = new Metrica();
+        Metrica metricaRadixSort = new Metrica();
+    
         Scanner entrada = new Scanner(System.in);
 
         int opc;
@@ -39,23 +44,46 @@ public class ImpOrdenamiento {
             tipo = 2;
         } else 
             opc = 1;
-
+        //Binary Insertion Sort
+        metricaBinaryInsertionSort.start();
         bis.binaryInsertionSort(opc - 1, order, tipo);
+        metricaBinaryInsertionSort.stop();
+        metricaBinaryInsertionSort.setCount(bis.getCountChanges());
         LinkedList<ArrayList<String>> listaBinInSort = bis.getLista();
         dao.generarArchivoSalida(listaBinInSort,"ArchivosSalida/BinaryInsertionSort_ordenado.csv");
 
+        //QuickSort
+        metricaQuickSort.start();
         quickSort.recQSort(0, lista.size()-1,opc-1,order,tipo);
+        metricaQuickSort.stop();
+        metricaQuickSort.setCount(quickSort.getSwapCounter());
         LinkedList<ArrayList<String>> listaQSort = quickSort.getLista();
         dao.generarArchivoSalida(listaQSort,"ArchivosSalida/QuickSort_ordenado.csv");
 
+        //MergeSort
+        metricaMergeSort.start();
         merge.mergeSort(order, tipo, opc - 1);
+        metricaMergeSort.stop();
+        metricaMergeSort.setCount(merge.getCount());
         LinkedList<ArrayList<String>> listaMergeSort = merge.getList();
         dao.generarArchivoSalida(listaMergeSort,"ArchivosSalida/MergeSort_ordenado.csv");
         
+        metricaRadixSort.start();
         radix.radixSort(lista.size(), opc - 1, order, tipo);
+        metricaRadixSort.stop();
+        metricaRadixSort.setCount(radix.getContador());
         LinkedList<ArrayList<String>> listaRadixSort = radix.getList();
         dao.generarArchivoSalida(listaRadixSort,"ArchivosSalida/RadixSort_ordenado.csv");
 
         entrada.close();
+
+        System.out.println("Binary Insertion Sort");
+        metricaBinaryInsertionSort.displayMetrics();
+        System.out.println("QuickSort");
+        metricaQuickSort.displayMetrics();
+        System.out.println("MergeSort");
+        metricaMergeSort.displayMetrics();
+        System.out.println("RadixSort");
+        metricaRadixSort.displayMetrics();
     }
 }
