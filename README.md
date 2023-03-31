@@ -7,7 +7,11 @@ Algoritmos: BynaryInsertionSort, MergeSort, QuickSort, RadixSort.
 
 ## Propósito
 El objetivo de este proyecto es la integración de algoritmos de ordenamiento para un ejemplo de Dataset (Conjunto de datos). 
-Los algoritmos utilizados son BynaryInsertionSort, MergeSort, QuickSort, RadixSort.
+Algoritmos:
+* BynaryInsertionSor
+* MergeSort 
+* QuickSort
+* RadixSort.
 
 ## Lenguaje de programación
 El lenguaje es hecho con Java.
