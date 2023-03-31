@@ -33,9 +33,9 @@ class RadixSort {
 	}
 
 	/**
-	 * Ordena una lista de cadenas utilizando el algoritmo de ordenación de counting sort en orden ascendente, según el carácter en la posición dada. 
-	 * @param place la posición del carácter en cada cadena a tener en cuenta para la ordenación
-	 * @param key el índice del arreglo que se usará para la ordenación
+	 * Ordena una lista de cadenas utilizando el algoritmo de ordenación de counting sort en orden ascendente, según el caracter en la posicion dada. 
+	 * @param place la posición del caracter en cada cadena a tener en cuenta para la ordenacion
+	 * @param key el indice del arreglo que se usara para la ordenacion
 	 */
 	public void countingSortStrASC(int place, int key) {
 		LinkedList<ArrayList<String>> temp = new LinkedList<ArrayList<String>>();
@@ -61,9 +61,9 @@ class RadixSort {
 	}
 
 	/**
-	 * Ordena una lista de cadenas utilizando el algoritmo de ordenación de counting sort en orden descendente, según el carácter en la posición dada. 
-	 * @param place la posición del carácter en cada cadena a tener en cuenta para la ordenación
-	 * @param key el índice del arreglo que se usará para la ordenación
+	 * Ordena una lista de cadenas utilizando el algoritmo de ordenacion de counting sort en orden descendente, según el carácter en la posición dada. 
+	 * @param place la posición del caracter en cada cadena a tener en cuenta para la ordenacion
+	 * @param key el indice del arreglo que se usara para la ordenación
 	 */
 	public void countingSortStrDES(int place, int key) {
 		LinkedList<ArrayList<String>> temp = new LinkedList<ArrayList<String>>();
@@ -91,7 +91,7 @@ class RadixSort {
 
 	/**
 	 * Obtiene la longitud mas larga de una String de la lista de elementos
-	 * @param key el índice del arreglo que se usará para la ordenación
+	 * @param key el indice del arreglo que se usará para la ordenacion
 	 * @return  la longitud mas larga de una String de la lista
 	 */
 	public int getMaxLength(int key) {
@@ -107,9 +107,9 @@ class RadixSort {
 	}
 
 	/**
-	 * Ordena una lista de numeros utilizando el algoritmo de ordenación de counting sort, según una posición de un dígito a considerar.
-	 * @param place la posición del dígito a considerar en el ordenamiento
-	 * @param key el índice del arreglo que se usará para la ordenación
+	 * Ordena una lista de numeros utilizando el algoritmo de ordenación de counting sort, segun una posición de un digito a considerar.
+	 * @param place la posicion del digito a considerar en el ordenamiento
+	 * @param key el indice del arreglo que se usara para la ordenacion
 	 */
 	public void countingSortNum(int place, int key) {
 		LinkedList<ArrayList<String>> output = new LinkedList<ArrayList<String>>();
@@ -146,8 +146,8 @@ class RadixSort {
 
 	/**
 	 * Obtiene el numero mas grande de lista de elementos
-	 * @param n el tamaño del lista
-	 * @param key el índice del arreglo que se usará para la ordenación
+	 * @param n el tamano del lista
+	 * @param key el indice del arreglo que se usara para la ordenacion
 	 * @return  el numero mas grande de lista de elementos
 	 */
 	public double getMax(int n, int key) {
@@ -159,8 +159,8 @@ class RadixSort {
 	}
 
 	/**
-	 * Ordena la lista, previamente proporcionada durante la creacion del objeto RadixSort, por el valor de una llave específica usando el algoritmo de ordenamiento Radix Sort.
-	 * @param key el indice del arrayList que se usará para la ordenación de toda la lista
+	 * Ordena la lista, previamente proporcionada durante la creacion del objeto RadixSort, por el valor de una llave especifica usando el algoritmo de ordenamiento Radix Sort.
+	 * @param key el indice del arrayList que se usará para la ordenacion de toda la lista
 	 * @param order el orden en que se desea ordenar el ArrayList (1 para ascendente, 2 para descendente).
 	 * @param tipo el tipo de datos que se quiere ordenar (1 para String, 2 para Double).
 	 */

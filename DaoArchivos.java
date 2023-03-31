@@ -7,22 +7,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class DaoArchivos {
-    
+/**
+ * Clase para ordenar acceder a la informacion de datos de un archivo y crear o modificar archivos.
+ * @author Aaron Graniel, Daniel Garcia
+ * @version 1.0
+ */
 
+public class DaoArchivos {
     /**
-     * La dirección URL del archivo (.csv ó .txt).
+     * La direccion URL del archivo (.csv o .txt).
      */
     private String direccion;
 
     /**
-     * La lista doblemente ligada que alberga la información de cada elemento del Dataset.
+     * La lista doblemente ligada que alberga la informacion de cada elemento del Dataset.
      */
     private LinkedList<ArrayList<String>> lista = new LinkedList<ArrayList<String>>();
     
     /**
-     * La función que accede a la información del archivo en particular.
-     * @param direccion La dirección URL del archivo (.csv ó .txt).
+     * La funcion que accede a la informacion del archivo en particular.
+     * @param direccion La direccion URL del archivo (.csv o .txt).
      * @throws IOException si el archivo tiene un error de entrada o salida de texto.
      */
     public DaoArchivos(String direccion) throws IOException{
@@ -71,7 +75,7 @@ public class DaoArchivos {
     }
 
     /**
-     * Función de retorno de la lista doblemente ligada.
+     * Funcion de retorno de la lista doblemente ligada.
      * @return La lista doblemente ligada con sus elementos asignados.
      */
     public LinkedList<ArrayList<String>> getLista(){
@@ -79,10 +83,10 @@ public class DaoArchivos {
     }
 
     /**
-     * Función que genera un archivo nuevo de salida con respecto a los elementos otorgados en una lista doblemente ligada.
+     * Funcion que genera un archivo nuevo de salida con respecto a los elementos otorgados en una lista doblemente ligada.
      * @param lista La lista doblemente ligada con elementos de datos.
      * @param direccion El nombre del archivo a actualizar o crear en una carpeta.
-     * @return El número 0 en caso de ser éxitoso la creación de archivo.
+     * @return El numero 0 en caso de ser exitoso la creacion de archivo.
      * @throws IOException En caso de fallo con la escritura de entrada o salida del archivo.
      */
     public int generarArchivoSalida(LinkedList<ArrayList<String>> lista, String direccion) throws IOException{
@@ -109,17 +113,17 @@ public class DaoArchivos {
     }
 
     /**
-     * Función para generar un archivo de salida con las métricas de cada algoritmo.
+     * Funcion para generar un archivo de salida con las metricas de cada algoritmo.
      * <ul>
-     * <li>Tiempo de ejecución del algoritmo
-     * <li>Número de comparaciones
-     * <li>Número de intercambios
+     * <li>Tiempo de ejecucion del algoritmo
+     * <li>Numero de comparaciones
+     * <li>Numero de intercambios
      * <ul>
-     * @param nombre Es el nombre del algoritmo de ordenamiento a añadir al archivo.
-     * @param time Es el tiempo de ejecución del algoritmo de ordenamiento.
-     * @param intercambios Es el número de intercambios realizado por el algoritmo de ordenamiento.
-     * @param comparaciones Es el número de comparaciones realizado por el algoritmo de ordenamiento.
-     * @return El número 0 en caso de ser éxitoso la creación de archivo.
+     * @param nombre Es el nombre del algoritmo de ordenamiento a anadir al archivo.
+     * @param time Es el tiempo de ejecucion del algoritmo de ordenamiento.
+     * @param intercambios Es el numero de intercambios realizado por el algoritmo de ordenamiento.
+     * @param comparaciones Es el numero de comparaciones realizado por el algoritmo de ordenamiento.
+     * @return El numero 0 en caso de ser exitoso la creacion de archivo.
      * @throws IOException En caso de fallo con la escritura de entrada o salida del archivo.
      */
     public int generarArchivoSalida(String nombre, String time, String intercambios, String comparaciones) throws IOException {

@@ -8,22 +8,22 @@ El número total de comparaciones indica la cantidad de veces que se compararon d
 El número total de intercambios indica la cantidad de veces que se intercambiaron dos elementos para ordenar la lista.
 
 Algoritmo de Binary Insertion Sort
-Tiempo de ejecución: 9603ms
-Número de comparaciones: 17941
+Tiempo de ejecución: 197ms
+Número de comparaciones: 19899
 Número de intercambios: No vale para este algoritmo
 
 Algoritmo de Quick Sort
-Tiempo de ejecución: 14044ms
-Número de comparaciones: 1777848
-Número de intercambios: 1779211
+Tiempo de ejecución: 17455ms
+Número de comparaciones: 1587195
+Número de intercambios: 1588558
 
 Algoritmo de Merge Sort
-Tiempo de ejecución: 176ms
-Número de comparaciones: 11239
+Tiempo de ejecución: 330ms
+Número de comparaciones: 11245
 Número de intercambios: No vale para este algoritmo
 
 Algoritmo de Radix Sort
-Tiempo de ejecución: 8998ms
+Tiempo de ejecución: 11715ms
 Número de comparaciones: No vale para este algoritmo
 Número de intercambios: No vale para este algoritmo
 

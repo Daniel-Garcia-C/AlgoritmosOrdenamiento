@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Clase para ordenar Lista doblemente ligada de arreglos de Strings mediante el algoritmo de QuickSort
+ * @author Aaron Graniel, Daniel Garcia
+ * @version 1.0
+ */
+
 public class QuickSort{
 
     /**
@@ -27,7 +33,7 @@ public class QuickSort{
     }
 
     /**
-     * Obtiene la lista doblemente ligada de los elementos almacenados en él.
+     * Obtiene la lista doblemente ligada de los elementos almacenados en el.
      * @return Lista doblemente ligada con sus elementos almacenados.
      */
     public LinkedList<ArrayList<String>> getLista(){
@@ -35,26 +41,26 @@ public class QuickSort{
     }
 
     /**
-     * Obtiene el número de comparaciones realizadas en el algoritmo de ordenamiento: MergeSort.
-     * @return Un número entero de comparaciones realizadas en el algoritmo MergeSort.
+     * Obtiene el numero de comparaciones realizadas en el algoritmo de ordenamiento: MergeSort.
+     * @return Un numero entero de comparaciones realizadas en el algoritmo MergeSort.
      */
     public int getComparaciones() {
         return comparaciones;
     }
 
     /**
-     * Obtiene el número de intercambios realizados en el algoritmo de ordenamiento: MergeSort.
-     * @return Un número entero de intercambios realizados en el algoritmo MergeSort.
+     * Obtiene el numero de intercambios realizados en el algoritmo de ordenamiento: MergeSort.
+     * @return Un numero entero de intercambios realizados en el algoritmo MergeSort.
      */
     public int getIntercambios() {
         return intercambios;
     }
 
     /**
-     * Método que ordena una lista recursivamente utilizando el algoritmo QuickSort.
-     * @param low Índice del primer elemento en la lista a ordenar.
-     * @param high Índice del último elemento en la lista a ordenar.
-     * @param key Índice del atributo por el cual se va a ordenar la lista.
+     * Metodo que ordena una lista recursivamente utilizando el algoritmo QuickSort.
+     * @param low Indice del primer elemento en la lista a ordenar.
+     * @param high Indice del ultimo elemento en la lista a ordenar.
+     * @param key Indice del atributo por el cual se va a ordenar la lista.
      * @param order Indica si la lista debe ser ordenada en orden ascendente (valor 1) o descendente (valor diferente de 1).
      * @param tipo Indica el tipo de dato del atributo por el cual se va a ordenar la lista.
      */
@@ -82,12 +88,12 @@ public class QuickSort{
     }
     
     /**
-     * Realiza la partición de una sublista en orden ascendente.
-     * @param low Índice del primer elemento en la sublista a ordenar.
-     * @param high Índice del último elemento en la sublista a ordenar.
-     * @param key Índice del atributo por el cual se va a ordenar la sublista.
+     * Realiza la particion de una sublista en orden ascendente.
+     * @param low Indice del primer elemento en la sublista a ordenar.
+     * @param high Indice del ultimo elemento en la sublista a ordenar.
+     * @param key Indice del atributo por el cual se va a ordenar la sublista.
      * @param tipo Indica el tipo de dato del atributo por el cual se va a ordenar la sublista.
-     * @return El índice del pivote nuevo ascendente.
+     * @return El Indice del pivote nuevo ascendente.
      */
     public int partitionASC(int low, int high, int key, int tipo){
         int i = (low - 1);
@@ -121,12 +127,12 @@ public class QuickSort{
 
 
     /**
-     * Realiza la partición de una sublista en orden <b>Descendente</b>.
-     * @param low Índice del primer elemento en la sublista a ordenar.
-     * @param high Índice del último elemento en la sublista a ordenar.
-     * @param key Índice del atributo por el cual se va a ordenar la sublista.
+     * Realiza la particion de una sublista en orden <b>Descendente</b>.
+     * @param low Indice del primer elemento en la sublista a ordenar.
+     * @param high Indice del ultimo elemento en la sublista a ordenar.
+     * @param key Indice del atributo por el cual se va a ordenar la sublista.
      * @param tipo Indica el tipo de dato del atributo por el cual se va a ordenar la sublista.
-     * @return El índice del pivote nuevo descendente.
+     * @return El Indice del pivote nuevo descendente.
      */
     public int partitionDES(int low, int high, int key, int tipo){
         int i = (low - 1);

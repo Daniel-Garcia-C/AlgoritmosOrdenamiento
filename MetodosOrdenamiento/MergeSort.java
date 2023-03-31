@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Clase para ordenar Lista doblemente ligada de arreglos de Strings mediante el algoritmo de MergeSort
+ * @author Aaron Graniel, Daniel Garcia
+ * @version 1.0
+ */
+
 public class MergeSort{
    /**
     * Atributo de la lista doblemente ligado con una ArrayList de elementos.
@@ -21,7 +27,7 @@ public class MergeSort{
    }
 
    /**
-    * Función para obtener la lista doblemente ligada con ArrayList de elementos de un Dataset.
+    * Funcion para obtener la lista doblemente ligada con ArrayList de elementos de un Dataset.
     * @return Obtener la lista doblemente ligada con ArrayList de elementos de un Dataset
     */
    public LinkedList<ArrayList<String>> getList(){
@@ -29,18 +35,18 @@ public class MergeSort{
    }
 
    /**
-    * Función para obtener el número de comparaciones realizados en el algoritmo de búsqueda.
-    * @return Número entero de comparaciones realizadas en el algoritmo de búsqueda.
+    * Funcion para obtener el numero de comparaciones realizados en el algoritmo de busqueda.
+    * @return Numero entero de comparaciones realizadas en el algoritmo de busqueda.
     */
    public int getComparaciones() {
       return comparaciones;
    }
 
    /**
-    * Función para generar el espacio de trabajo para el algoritmo de ordenamiento: MergeSort
-    * @param order El tipo de orden que se requiere: Ascendente (1) | Descendente (!1)
-    * @param tipo El tipo de dato (String ó Entero) a ordenar del Dataset con respecto a las columnas.
-    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos. 
+    * Funcion para generar el espacio de trabajo para el algoritmo de ordenamiento: MergeSort
+    * @param order El tipo de orden que se requiere: Ascendente (1) | Descendente (Si es distinto de 1)
+    * @param tipo El tipo de dato (String o Entero) a ordenar del Dataset con respecto a las columnas.
+    * @param key Es un parametro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos. 
     */
    public void mergeSort(int order, int tipo, int key) {
       LinkedList<ArrayList<String>> workSpace = new LinkedList<ArrayList<String>>();
@@ -63,13 +69,13 @@ public class MergeSort{
    }  
 
    /**
-    * Función para hacer Merge en forma <b>Ascendente</b> del algoritmo de búsqueda MergeSort.
-    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusión.
-    * @param lowPtr Es un índice que apunta al primer elemento del subarreglo a fusionar.
-    * @param highPtr Es un índice que apunta al último elemento del subarreglo a fusionar.
-    * @param upperBound Es un índice que apunta al último elemento del arreglo a ordenar.
-    * @param tipo Es un parámetro que indica el tipo de dato a ordenar con respecto al Dataset.
-    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
+    * Funcion para hacer Merge en forma <b>Ascendente</b> del algoritmo de busqueda MergeSort.
+    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusion.
+    * @param lowPtr Es un indice que apunta al primer elemento del subarreglo a fusionar.
+    * @param highPtr Es un indice que apunta al ultimo elemento del subarreglo a fusionar.
+    * @param upperBound Es un indice que apunta al ultimo elemento del arreglo a ordenar.
+    * @param tipo Es un parametro que indica el tipo de dato a ordenar con respecto al Dataset.
+    * @param key Es un parametro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
     */
    private void mergeASC(LinkedList<ArrayList<String>> workSpace, int lowPtr, int highPtr, int upperBound, int tipo,int key) {
       int j = 0;                             
@@ -118,13 +124,13 @@ public class MergeSort{
    }
 
    /**
-    * Función para hacer Merge en forma <b>Descendente</b> del algoritmo de búsqueda MergeSort.
-    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusión.
-    * @param lowPtr Es un índice que apunta al primer elemento del subarreglo a fusionar.
-    * @param highPtr Es un índice que apunta al último elemento del subarreglo a fusionar.
-    * @param upperBound Es un índice que apunta al último elemento del arreglo a ordenar.
-    * @param tipo Es un parámetro que indica el tipo de dato a ordenar con respecto al Dataset.
-    * @param key Es un parámetro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
+    * Funcion para hacer Merge en forma <b>Descendente</b> del algoritmo de búsqueda MergeSort.
+    * @param workSpace Es el array temporal que se utiliza para almacenar los valores ordenados durante el proceso de fusion.
+    * @param lowPtr Es un indice que apunta al primer elemento del subarreglo a fusionar.
+    * @param highPtr Es un indice que apunta al último elemento del subarreglo a fusionar.
+    * @param upperBound Es un indice que apunta al último elemento del arreglo a ordenar.
+    * @param tipo Es un parametro que indica el tipo de dato a ordenar con respecto al Dataset.
+    * @param key Es un parametro que indica la clave o campo de lista doblemente ligada por el cual se van a ordenar los datos.
     */
    private void mergeDES(LinkedList<ArrayList<String>> workSpace, int lowPtr, int highPtr, int upperBound, int tipo, int key) {
       int j = 0;                             

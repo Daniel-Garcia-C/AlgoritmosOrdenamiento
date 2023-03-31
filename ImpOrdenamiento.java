@@ -6,8 +6,8 @@ import java.util.Calendar;
 
 
 /**
- * Comparación de algoritmos de ordenamiento en un Dataset.
- * @author Aarón Isaac Graniel Arzat
+ * Comparacion de algoritmos de ordenamiento en un Dataset.
+ * @author Aaron Isaac Graniel Arzat
  * @author Daniel García Cetina
  * 
  * @version 1.0
@@ -82,7 +82,7 @@ public class ImpOrdenamiento {
         millis = 0;
         
         millis = Calendar.getInstance().getTimeInMillis() - millis;
-        radix.radixSort(lista.size(), opc - 1, order, tipo);
+        radix.radixSort(opc - 1, order, tipo);
         millis = Calendar.getInstance().getTimeInMillis() - millis;
         LinkedList<ArrayList<String>> listaRadixSort = radix.getList();
         System.out.println("Tiempo" + millis);

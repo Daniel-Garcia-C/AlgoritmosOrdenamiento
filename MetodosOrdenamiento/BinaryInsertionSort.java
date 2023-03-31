@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class BinaryInsertionSort {
     /**
-     * lista de los datos que se quieren ordenar
+     * Lista de los datos que se quieren ordenar
      */
     private LinkedList<ArrayList<String>> lista;
     /**
@@ -22,9 +22,9 @@ public class BinaryInsertionSort {
 
 
     /**
-     * Crea un objeto BinaryInsertionSort con una lista y su tamaño. 
+     * Crea un objeto BinaryInsertionSort con una lista y su tamanio. 
      * @param lista La lista a ordenar
-     * @param size El tamaño de la lista
+     * @param size El tamanio de la lista
      */
     public BinaryInsertionSort (LinkedList<ArrayList<String>> lista, int size){
         this.lista = lista;
